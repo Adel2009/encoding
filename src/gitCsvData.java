@@ -30,22 +30,30 @@ public class gitCsvData
                 for (String data : csvRow)
                 {
 
+
                     //Create MessageDigest object for MD5
 
-                    MessageDigest messagedigest = MessageDigest.getInstance("MD5");
+                    MessageDigest messagedigest = MessageDigest.getInstance("SHA-256");
                     //update
                     messagedigest .update(data.getBytes(), 0, data.length());
                     byte[] Datahash = messagedigest.digest(data.getBytes(UTF_8));
+
+                    StringBuffer result = new StringBuffer();
+                    for (int j =0;j<Datahash.length;j++){
+                        result.append(Integer.toString((Datahash[j] & 0xff) + 0x100,16).substring(1));
+                    }
+                    System.out.println(result.toString());
 
                     //Converts message digest value in base 16 (hex)
                     insert = new BigInteger(1, messagedigest.digest()).toString(16);
 
                     //statement.setString((i % 2) + 1, String.valueOf(hash));
                     statement.setBytes((i % 2) + 1, Datahash);
+                    //statement.setString(2,result.toString());
 
-                    if (++i % 2 == 0)
+                   if (++i % 2 == 0)
                         statement.addBatch();// add batch
-                        //statement.toString();
+                       // statement.toString();
                     if (i % 20 == 0)// insert when the batch size is 10
                         statement.executeBatch();
                        // statement.toString();

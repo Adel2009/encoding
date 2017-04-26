@@ -6,24 +6,6 @@ import java.sql.Statement;
 
 public class startCommuncation
 {
-  //  public static Connection getConnection() throws SQLException, ClassNotFoundException
-  //  {
-        //Class.forName("com.mysql.jdbc.Driver");
-
-    //    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/students", "root", "CSCE741!");
-
-      //  return connection;
-
-
-        //Class.forName("com.mysql.jdbc.Driver").newInstance();
-        //Connection connect= DriverManager.getConnection("jdbc:mysql://localhost:3306/students", "root", "CSCE741!");
-
-        //Statement stat = connect.createStatement();
-
-
-
-
-   // }
 
 
 
